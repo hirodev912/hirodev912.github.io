@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>拡大強震モニタ</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            color: #000;
+            background: #fff;
+            margin: 0;
+            padding: 0;
+            zoom: 1.0;
+            font-size: 14px;
+            font-family: 'Helvetica', Arial, sans-serif;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        #nied_monitor {
+            position: relative;
+            width: 352px;
+            height: 400px;
+        }
+
+        #nied_basemap,
+        #nied_estshindo,
+        #nied_kyoshinimg,
+        #nied_pswave {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
+        #nied_basemap {
+            z-index: 0;
+        }
+
+        #nied_estshindo {
+            z-index: 10;
+            opacity: 0.5;
+            display: none;
+        }
+
+        #nied_pswave {
+            z-index: 30;
+            display: block;
+        }
+
+        #nied_kyoshinimg {
+            z-index: 20;
+        }
+
+        #estshindo {
+            border: 1px solid #888;
+            background: #fff;
+            color: #888;
+            width: 40px;
+            height: 25px;
+        }
+
+        #pswave {
+            border: 1px solid #FD8F00;
+            background: #fff;
+            color: #FD8F00;
+            width: 40px;
+            height: 25px;
+        }
+
+        #eewinfo {
+            position: absolute;
+            width: 350px;
+            height: 40px;
+            border: 1px solid #00f;
+            display: block;
+            text-align: center;
+        }
+
+        #zoom,
+        #color,
+        #shihyo-kind {
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            background: linear-gradient(to bottom, #fff 0% 50%, #eeeeee 50% 100%);
+        }
+
+        #shihyo-kind {
+            height: 25px;
+        }
+
+        #depth_s, #depth_b, #server_1, #server_2 {
+            display: none;
+        }
+
+        #label_s, #label_b, #label_1, #label_2 {
+            display: inline-block;
+            text-align: center;
+            width: 40px;
+            height: 25px;
+        }
+
+        #depth_s, #server_1 {
+            border: 1px solid #FD8F00;
+            color: #FD8F00;
+            background: #fff;
+        }
+
+        #depth_b, #server_2 {
+            border: 1px solid #aaa;
+            color: #000;
+            background: linear-gradient(to bottom, #fff 0% 50%, #eeeeee 50% 100%);
+        }
+
+        #depth_s:checked ~ #label_s, #depth_b:checked ~ #label_b, #server_1:checked ~ #label_1, #server_2:checked ~ #label_2  {
+            border: 1px solid #FD8F00;
+            color: #FD8F00;
+            background: #fff;
+        }
+
+        #depth_s:checked ~ #label_b, #depth_b:checked ~ #label_s, #server_1:checked ~ #label_2, #server_2:checked ~ #label_1 {
+            border: 1px solid #aaa;
+            color: #000;
+            background: linear-gradient(to bottom, #fff 0% 50%, #eeeeee 50% 100%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        <p>
+            <span>画像サイズ:</span>
+            <select id="zoom">
+                <option value="1.0" selected>標準</option>
+                <option value="1.25">中</option>
+                <option value="1.5">大</option>
+            </select>
+            <span>地図画像:</span>
+            <select id="color">
+                <option value="w" selected>白</option>
+                <option value="b">黒</option>
+            </select>
+        </p>
+        <p>
+            <span>予想震度</span>
+            <button id="estshindo" onclick="putestimg();">OFF</button>
+            <span>予想円</span>
+            <button id="pswave" onclick="putpswave();">ON</button>
+            <input type="checkbox" id="changeopacity" checked>
+            <label for="changeopacity">予想震度半透明化</label>
+        </p>
+        <p>
+            <select id="shihyo-kind">
+                <option value="acmap" selected>最大加速度</option>
+                <option value="jma">リアルタイム震度</option>
+                <option value="vcmap">最大速度</option>
+                <option value="dcmap">最大変位</option>
+                <option value="rsp0125">0.125Hz速度応答</option>
+                <option value="rsp0250">0.25Hz速度応答</option>
+                <option value="rsp0500">0.5Hz速度応答</option>
+                <option value="rsp1000">1.0Hz速度応答</option>
+                <option value="rsp2000">2.0Hz速度応答</option>
+                <option value="rsp4000">4.0Hz速度応答</option>
+            </select>
+            <input type="radio" name="depth" value="s" id="depth_s" checked>
+            <input type="radio" name="depth" value="b" id="depth_b">
+            <label for="depth_s" id="label_s">地表</label>
+            <label for="depth_b" id="label_b">地中</label>
+            <input type="radio" name="server" value="http://www.kmoni.bosai.go.jp/" id="server_1" checked>
+            <input type="radio" name="server" value="https://smi.lmoniexp.bosai.go.jp/" id="server_2">
+            <label for="server_1" id="label_1">#1</label>
+            <label for="server_2" id="label_2">#2</label>
+        </p>
+    </div>
+    <div id="nied_monitor">
+        <img src="base_map_w.png" id="nied_basemap">
+        <img id="nied_estshindo">
+        <img id="nied_pswave">
+        <img id="nied_kyoshinimg">
+    </div>
+    <span id="eewinfo"></span>
+    <script>
+        let timeoffset = 0, estimg = false, psimg = true, bodystyle = document.body.style, lastAnnouncedTime = null;
+        function timesync() {
+            fetch('http://www.kmoni.bosai.go.jp/webservice/server/pros/latest.json?_=' + new Date().getTime()).then(r => r.json()).then(r => {
+                timeoffset = new Date(r.request_time) - new Date().getTime();
+            });
+        }
+        //timeoffset = new Date('2026/02/15 11:52:30').getTime() - new Date().getTime();
+        //timesync();
+        function putestimg() {
+            const buttoncolor = document.getElementById('estshindo'), estdisplay = document.getElementById('nied_estshindo').style;
+            let backcolor;
+            if (!estimg) {
+                estimg = true;
+                backcolor = "#FD8F00";
+                estdisplay.display = "block";
+            } else {
+                estimg = false;
+                backcolor = "#444";
+                estdisplay.display = "none";
+            }
+            buttoncolor.style.color = backcolor;
+            buttoncolor.style.border = "1px solid " + backcolor;
+            buttoncolor.textContent = (estimg) ? "ON" : "OFF";
+        }
+        function putpswave() {
+            const buttoncolor = document.getElementById('pswave'), psdisplay = document.getElementById('nied_pswave').style;
+            let backcolor;
+            if (!psimg) {
+                psimg = true;
+                backcolor = "#FD8F00";
+                psdisplay.display = "block";
+            } else {
+                psimg = false;
+                backcolor = "#444";
+                psdisplay.display = "none";
+            }
+            buttoncolor.style.color = backcolor;
+            buttoncolor.style.border = "1px solid " + backcolor;
+            buttoncolor.textContent = (psimg) ? "ON" : "OFF";
+        }
+        document.getElementById('zoom').addEventListener('change', (e) => {
+            const monitorstyle = document.getElementById('nied_monitor').style, eewstyle = document.getElementById('eewinfo').style;
+            monitorstyle.width = 352 * e.target.value + "px";
+            monitorstyle.height = 400 * e.target.value + "px";
+            eewstyle.width = 352 * e.target.value + "px";
+            eewstyle.height = 40 * e.target.value + "px";
+            eewstyle.fontSize = 14 * e.target.value + "px";
+        });
+        document.getElementById('color').addEventListener('change', (e) => {
+            document.getElementById('nied_basemap').src = "base_map_" + e.target.value + ".png";
+            bodystyle.color = (e.target.value == "w") ? "#000" : "#fff";
+            bodystyle.background = (e.target.value == "w") ? "#fff" : "#000";
+        });
+        document.getElementById('changeopacity').addEventListener('change', (e) => {
+            let opacity;
+            if (e.target.checked) {
+                opacity = 0.5;
+            } else {
+                opacity = 1;
+            }
+            document.getElementById('nied_estshindo').style.opacity = opacity;
+        });
+        function getnowtime() {
+            const realtime = new Date(new Date() - 1100 + timeoffset);
+            const year = realtime.getFullYear();
+            const month = ('00' + (realtime.getMonth() + 1)).slice(-2);
+            const date = ('00' + realtime.getDate()).slice(-2);
+            const hour = ('00' + realtime.getHours()).slice(-2);
+            const minute = ('00' + realtime.getMinutes()).slice(-2);
+            const second = ('00' + realtime.getSeconds()).slice(-2);
+            return [year, month, date, hour, minute, second];
+        }
+        function updateniedimg() {
+            const t = getnowtime();
+            const shihyo_name = document.getElementById('shihyo-kind').value; 
+            const serverlist = document.getElementsByName('server');
+            const depth = document.getElementsByName('depth');
+            let host_server;
+            let img_depth;
+            serverlist.forEach((h) => {
+                if (h.checked) {
+                    host_server = h.value;
+                }
+            });
+            depth.forEach((d) => {
+                if (d.checked) {
+                    img_depth = d.value;
+                }
+            })
+            document.getElementById('nied_kyoshinimg').src = `${host_server}data/map_img/RealTimeImg/${shihyo_name}_${img_depth}/${t[0]}${t[1]}${t[2]}/${t[0]}${t[1]}${t[2]}${t[3]}${t[4]}${t[5]}.${shihyo_name}_${img_depth}.gif`;
+            document.getElementById('nied_pswave').src = `${host_server}data/map_img/PSWaveImg/eew/${t[0]}${t[1]}${t[2]}/${t[0]}${t[1]}${t[2]}${t[3]}${t[4]}${t[5]}.eew.gif`;
+            document.getElementById('nied_estshindo').src = `${host_server}data/map_img/EstShindoImg/eew/${t[0]}${t[1]}${t[2]}/${t[0]}${t[1]}${t[2]}${t[3]}${t[4]}${t[5]}.eew.gif`;
+        }
+        function updateeew() {
+            fetch('https://api.wolfx.jp/jma_eew.json?' + new Date().getTime()).then(r=>r.json()).then(r=>{
+                if (lastAnnouncedTime !== r.AnnouncedTime && lastAnnouncedTime !== null) {
+                    const title = r.Title, number = r.Serial, hypo = r.Hypocenter, maxint = String(r.MaxIntensity).replace('-', '弱').replace('+', '強'), depth = r.Depth + "KM", serial = (r.isFinal) ? "最終報" : "第" + number + "報";
+                    document.getElementById('eewinfo').innerHTML = `${title} ${serial} ${hypo}<br>最大震度${maxint} 深さ${depth}`;
+                }
+            });
+        }
+        updateeew();
+        setInterval(updateniedimg, 1000);
+        setInterval(updateeew, 5000);
+    </script>
+</body>
+
+</html>
