@@ -185,12 +185,13 @@
     <script>
         let timeoffset = 0, estimg = false, psimg = true, bodystyle = document.body.style, lastAnnouncedTime = null;
         function timesync() {
-            fetch('http://www.kmoni.bosai.go.jp/webservice/server/pros/latest.json?_=' + new Date().getTime()).then(r => r.json()).then(r => {
-                timeoffset = new Date(r.request_time) - new Date().getTime();
+            fetch('https://api.wolfx.jp/ntp.json').then(r => r.json()).then(r => {
+                timeoffset = new Date(r.JST.str) - new Date().getTime();
             });
         }
         //timeoffset = new Date('2026/02/15 11:52:30').getTime() - new Date().getTime();
-        //timesync();
+        timesync();
+        setInterval(timesync, 3600000);
         function putestimg() {
             const buttoncolor = document.getElementById('estshindo'), estdisplay = document.getElementById('nied_estshindo').style;
             let backcolor;
@@ -289,5 +290,6 @@
         setInterval(updateeew, 5000);
     </script>
 </body>
+
 
 </html>
