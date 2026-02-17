@@ -5,6 +5,9 @@ on:
     - cron: '*/30 * * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   fetch:
     runs-on: ubuntu-latest
@@ -24,4 +27,3 @@ jobs:
           git add data/tepco.csv
           git commit -m "update tepco csv" || exit 0
           git push
-
