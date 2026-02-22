@@ -1,0 +1,1173 @@
+[
+  {
+    "areas": [
+      {
+        "firstHeight": {
+          "condition": "津波到達中と推測"
+        },
+        "grade": "MajorWarning",
+        "immediate": true,
+        "maxHeight": {
+          "description": "５ｍ",
+          "value": 5
+        },
+        "name": "石川県能登"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 16:40:00"
+        },
+        "grade": "Warning",
+        "immediate": false,
+        "maxHeight": {
+          "description": "３ｍ",
+          "value": 3
+        },
+        "name": "山形県"
+      },
+      {
+        "firstHeight": {
+          "condition": "津波到達中と推測"
+        },
+        "grade": "Warning",
+        "immediate": true,
+        "maxHeight": {
+          "description": "３ｍ",
+          "value": 3
+        },
+        "name": "新潟県上中下越"
+      },
+      {
+        "firstHeight": {
+          "condition": "津波到達中と推測"
+        },
+        "grade": "Warning",
+        "immediate": true,
+        "maxHeight": {
+          "description": "３ｍ",
+          "value": 3
+        },
+        "name": "佐渡"
+      },
+      {
+        "firstHeight": {
+          "condition": "津波到達中と推測"
+        },
+        "grade": "Warning",
+        "immediate": true,
+        "maxHeight": {
+          "description": "３ｍ",
+          "value": 3
+        },
+        "name": "富山県"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 16:50:00"
+        },
+        "grade": "Warning",
+        "immediate": false,
+        "maxHeight": {
+          "description": "３ｍ",
+          "value": 3
+        },
+        "name": "石川県加賀"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 17:00:00"
+        },
+        "grade": "Warning",
+        "immediate": false,
+        "maxHeight": {
+          "description": "３ｍ",
+          "value": 3
+        },
+        "name": "福井県"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 17:00:00"
+        },
+        "grade": "Warning",
+        "immediate": false,
+        "maxHeight": {
+          "description": "３ｍ",
+          "value": 3
+        },
+        "name": "兵庫県北部"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 17:10:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "北海道太平洋沿岸西部"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 17:30:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "北海道日本海沿岸北部"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 16:50:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "北海道日本海沿岸南部"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 16:50:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "青森県日本海沿岸"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 16:50:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "秋田県"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 17:00:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "京都府"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 17:10:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "鳥取県"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 17:40:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "島根県出雲・石見"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 17:00:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "隠岐"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 18:20:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "山口県日本海沿岸"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 19:10:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "福岡県日本海沿岸"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 19:40:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "佐賀県北部"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 18:30:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "壱岐・対馬"
+      }
+    ],
+    "cancelled": false,
+    "code": 552,
+    "created_at": "2024/01/01 16:23:03.445",
+    "id": "65926857f0f6de0007564895",
+    "issue": {
+      "source": "気象庁",
+      "time": "2024/01/01 16:22:32",
+      "type": "Focus"
+    },
+    "time": "2024/01/01 16:22:33.294",
+    "timestamp": {
+      "convert": "2024/01/01 16:22:33.287",
+      "register": "2024/01/01 16:22:33.294"
+    },
+    "user_agent": "jmaxml-seis-parser-go, relay, register-api",
+    "ver": "20231023"
+  },
+  {
+    "areas": [
+      {
+        "firstHeight": {
+          "condition": "津波到達中と推測"
+        },
+        "grade": "Warning",
+        "immediate": true,
+        "maxHeight": {
+          "description": "３ｍ",
+          "value": 3
+        },
+        "name": "新潟県上中下越"
+      },
+      {
+        "firstHeight": {
+          "condition": "津波到達中と推測"
+        },
+        "grade": "Warning",
+        "immediate": true,
+        "maxHeight": {
+          "description": "３ｍ",
+          "value": 3
+        },
+        "name": "佐渡"
+      },
+      {
+        "firstHeight": {
+          "condition": "津波到達中と推測"
+        },
+        "grade": "Warning",
+        "immediate": true,
+        "maxHeight": {
+          "description": "３ｍ",
+          "value": 3
+        },
+        "name": "富山県"
+      },
+      {
+        "firstHeight": {
+          "condition": "津波到達中と推測"
+        },
+        "grade": "Warning",
+        "immediate": true,
+        "maxHeight": {
+          "description": "３ｍ",
+          "value": 3
+        },
+        "name": "石川県能登"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 17:00:00"
+        },
+        "grade": "Warning",
+        "immediate": false,
+        "maxHeight": {
+          "description": "３ｍ",
+          "value": 3
+        },
+        "name": "石川県加賀"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 17:00:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "北海道日本海沿岸南部"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 16:50:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "青森県日本海沿岸"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 16:50:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "秋田県"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 16:40:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "山形県"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 17:10:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "福井県"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 17:10:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "京都府"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 17:10:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "兵庫県北部"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 17:20:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "鳥取県"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 17:50:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "島根県出雲・石見"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 17:10:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "隠岐"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2024/01/01 18:30:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "山口県日本海沿岸"
+      }
+    ],
+    "cancelled": false,
+    "code": 552,
+    "created_at": "2024/01/01 16:13:11.795",
+    "id": "65926607f0f6de0007564727",
+    "issue": {
+      "source": "気象庁",
+      "time": "2024/01/01 16:12:54",
+      "type": "Focus"
+    },
+    "time": "2024/01/01 16:12:54.611",
+    "timestamp": {
+      "convert": "2024/01/01 16:12:54.604",
+      "register": "2024/01/01 16:12:54.611"
+    },
+    "user_agent": "jmaxml-seis-parser-go, relay, register-api",
+    "ver": "20231023"
+  },
+  {
+    "areas": [],
+    "cancelled": true,
+    "code": 552,
+    "created_at": "2023/12/03 09:00:45.603",
+    "id": "656bc52df0f6de0007971fad",
+    "issue": {
+      "source": "気象庁",
+      "time": "2023/12/03 09:00:11",
+      "type": "Focus"
+    },
+    "time": "2023/12/03 09:00:12.889",
+    "timestamp": {
+      "convert": "2023/12/03 09:00:12.884",
+      "register": "2023/12/03 09:00:12.889"
+    },
+    "user_agent": "jmaxml-seis-parser-go, relay, register-api",
+    "ver": "20231023"
+  },
+  {
+    "areas": [
+      {
+        "firstHeight": {
+          "condition": "第１波の到達を確認"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "千葉県内房"
+      },
+      {
+        "firstHeight": {
+          "condition": "第１波の到達を確認"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "伊豆諸島"
+      },
+      {
+        "firstHeight": {
+          "condition": "第１波の到達を確認"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "小笠原諸島"
+      },
+      {
+        "firstHeight": {
+          "condition": "第１波の到達を確認"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "静岡県"
+      },
+      {
+        "firstHeight": {
+          "condition": "第１波の到達を確認"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "愛知県外海"
+      },
+      {
+        "firstHeight": {
+          "condition": "第１波の到達を確認"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "三重県南部"
+      },
+      {
+        "firstHeight": {
+          "condition": "第１波の到達を確認"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "和歌山県"
+      },
+      {
+        "firstHeight": {
+          "condition": "第１波の到達を確認"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "徳島県"
+      },
+      {
+        "firstHeight": {
+          "condition": "第１波の到達を確認"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "高知県"
+      },
+      {
+        "firstHeight": {
+          "condition": "津波到達中と推測"
+        },
+        "grade": "Watch",
+        "immediate": true,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "宮崎県"
+      },
+      {
+        "firstHeight": {
+          "condition": "第１波の到達を確認"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "鹿児島県東部"
+      },
+      {
+        "firstHeight": {
+          "condition": "第１波の到達を確認"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "奄美群島・トカラ列島"
+      }
+    ],
+    "cancelled": false,
+    "code": 552,
+    "created_at": "2023/12/03 07:00:26.141",
+    "id": "656ba8faf0f6de0007971f7f",
+    "issue": {
+      "source": "気象庁",
+      "time": "2023/12/03 07:00:09",
+      "type": "Focus"
+    },
+    "time": "2023/12/03 07:00:09.645",
+    "timestamp": {
+      "convert": "2023/12/03 07:00:09.64",
+      "register": "2023/12/03 07:00:09.645"
+    },
+    "user_agent": "jmaxml-seis-parser-go, relay, register-api",
+    "ver": "20231023"
+  },
+  {
+    "areas": [
+      {
+        "firstHeight": {
+          "arrivalTime": "2023/12/03 03:30:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "千葉県内房"
+      },
+      {
+        "firstHeight": {
+          "condition": "津波到達中と推測"
+        },
+        "grade": "Watch",
+        "immediate": true,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "伊豆諸島"
+      },
+      {
+        "firstHeight": {
+          "condition": "津波到達中と推測"
+        },
+        "grade": "Watch",
+        "immediate": true,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "小笠原諸島"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2023/12/03 03:30:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "静岡県"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2023/12/03 03:30:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "愛知県外海"
+      },
+      {
+        "firstHeight": {
+          "condition": "津波到達中と推測"
+        },
+        "grade": "Watch",
+        "immediate": true,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "三重県南部"
+      },
+      {
+        "firstHeight": {
+          "condition": "津波到達中と推測"
+        },
+        "grade": "Watch",
+        "immediate": true,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "和歌山県"
+      },
+      {
+        "firstHeight": {
+          "condition": "津波到達中と推測"
+        },
+        "grade": "Watch",
+        "immediate": true,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "徳島県"
+      },
+      {
+        "firstHeight": {
+          "condition": "津波到達中と推測"
+        },
+        "grade": "Watch",
+        "immediate": true,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "高知県"
+      },
+      {
+        "firstHeight": {
+          "condition": "津波到達中と推測"
+        },
+        "grade": "Watch",
+        "immediate": true,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "宮崎県"
+      },
+      {
+        "firstHeight": {
+          "condition": "津波到達中と推測"
+        },
+        "grade": "Watch",
+        "immediate": true,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "鹿児島県東部"
+      },
+      {
+        "firstHeight": {
+          "condition": "津波到達中と推測"
+        },
+        "grade": "Watch",
+        "immediate": true,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "奄美群島・トカラ列島"
+      },
+      {
+        "firstHeight": {
+          "condition": "津波到達中と推測"
+        },
+        "grade": "Watch",
+        "immediate": true,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "宮古島・八重山地方"
+      }
+    ],
+    "cancelled": false,
+    "code": 552,
+    "created_at": "2023/12/03 03:19:55.531",
+    "id": "656b754bf0f6de0007971f27",
+    "issue": {
+      "source": "気象庁",
+      "time": "2023/12/03 03:19:23",
+      "type": "Focus"
+    },
+    "time": "2023/12/03 03:19:24.311",
+    "timestamp": {
+      "convert": "2023/12/03 03:19:24.299",
+      "register": "2023/12/03 03:19:24.311"
+    },
+    "user_agent": "jmaxml-seis-parser-go, relay, register-api",
+    "ver": "20231023"
+  },
+  {
+    "areas": [
+      {
+        "firstHeight": {
+          "arrivalTime": "2023/12/03 03:30:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "千葉県内房"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2023/12/03 03:00:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "伊豆諸島"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2023/12/03 02:30:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "小笠原諸島"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2023/12/03 03:30:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "静岡県"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2023/12/03 03:30:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "愛知県外海"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2023/12/03 03:00:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "三重県南部"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2023/12/03 03:00:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "和歌山県"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2023/12/03 03:00:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "徳島県"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2023/12/03 03:00:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "高知県"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2023/12/03 02:30:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "宮崎県"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2023/12/03 03:00:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "鹿児島県東部"
+      },
+      {
+        "firstHeight": {
+          "arrivalTime": "2023/12/03 01:30:00"
+        },
+        "grade": "Watch",
+        "immediate": false,
+        "maxHeight": {
+          "description": "１ｍ",
+          "value": 1
+        },
+        "name": "宮古島・八重山地方"
+      }
+    ],
+    "cancelled": false,
+    "code": 552,
+    "created_at": "2023/12/02 23:56:43.782",
+    "id": "656b45abf0f6de0007971eb1",
+    "issue": {
+      "source": "気象庁",
+      "time": "2023/12/02 23:56:12",
+      "type": "Focus"
+    },
+    "time": "2023/12/02 23:56:12.707",
+    "timestamp": {
+      "convert": "2023/12/02 23:56:12.692",
+      "register": "2023/12/02 23:56:12.707"
+    },
+    "user_agent": "jmaxml-seis-parser-go, relay, register-api",
+    "ver": "20231023"
+  },
+  {
+    "areas": [],
+    "cancelled": true,
+    "code": 552,
+    "created_at": "2023/10/09 12:00:33.581",
+    "id": "65236cd1f0f6de0007969f22",
+    "issue": {
+      "source": "気象庁",
+      "time": "2023/10/09 12:00:02",
+      "type": "Focus"
+    },
+    "time": "2023/10/09 12:00:03.4",
+    "timestamp": {
+      "convert": "2023/10/09 12:00:03.396",
+      "register": "2023/10/09 12:00:03.4"
+    },
+    "user_agent": "jmaxml-seis-parser-go, relay, register-api",
+    "ver": "20220813"
+  },
+  {
+    "areas": [
+      {
+        "grade": "Watch",
+        "immediate": true,
+        "name": "千葉県九十九里・外房"
+      },
+      {
+        "grade": "Watch",
+        "immediate": false,
+        "name": "千葉県内房"
+      },
+      {
+        "grade": "Watch",
+        "immediate": false,
+        "name": "伊豆諸島"
+      },
+      {
+        "grade": "Watch",
+        "immediate": false,
+        "name": "小笠原諸島"
+      },
+      {
+        "grade": "Watch",
+        "immediate": false,
+        "name": "高知県"
+      },
+      {
+        "grade": "Watch",
+        "immediate": true,
+        "name": "宮崎県"
+      },
+      {
+        "grade": "Watch",
+        "immediate": true,
+        "name": "鹿児島県東部"
+      },
+      {
+        "grade": "Watch",
+        "immediate": true,
+        "name": "種子島・屋久島地方"
+      },
+      {
+        "grade": "Watch",
+        "immediate": true,
+        "name": "奄美群島・トカラ列島"
+      }
+    ],
+    "cancelled": false,
+    "code": 552,
+    "created_at": "2023/10/09 08:25:08.819",
+    "id": "65233a54f0f6de0007969ec2",
+    "issue": {
+      "source": "気象庁",
+      "time": "2023/10/09 08:24:34",
+      "type": "Focus"
+    },
+    "time": "2023/10/09 08:24:36.073",
+    "timestamp": {
+      "convert": "2023/10/09 08:24:36.07",
+      "register": "2023/10/09 08:24:36.073"
+    },
+    "user_agent": "jmaxml-seis-parser-go, relay, register-api",
+    "ver": "20220813"
+  },
+  {
+    "areas": [
+      {
+        "grade": "Watch",
+        "immediate": true,
+        "name": "千葉県九十九里・外房"
+      },
+      {
+        "grade": "Watch",
+        "immediate": true,
+        "name": "千葉県内房"
+      },
+      {
+        "grade": "Watch",
+        "immediate": false,
+        "name": "伊豆諸島"
+      },
+      {
+        "grade": "Watch",
+        "immediate": false,
+        "name": "小笠原諸島"
+      },
+      {
+        "grade": "Watch",
+        "immediate": false,
+        "name": "高知県"
+      }
+    ],
+    "cancelled": false,
+    "code": 552,
+    "created_at": "2023/10/09 07:52:05.297",
+    "id": "65233295f0f6de0007969e7d",
+    "issue": {
+      "source": "気象庁",
+      "time": "2023/10/09 07:51:33",
+      "type": "Focus"
+    },
+    "time": "2023/10/09 07:51:34.105",
+    "timestamp": {
+      "convert": "2023/10/09 07:51:34.101",
+      "register": "2023/10/09 07:51:34.105"
+    },
+    "user_agent": "jmaxml-seis-parser-go, relay, register-api",
+    "ver": "20220813"
+  },
+  {
+    "areas": [
+      {
+        "grade": "Watch",
+        "immediate": false,
+        "name": "伊豆諸島"
+      },
+      {
+        "grade": "Watch",
+        "immediate": false,
+        "name": "小笠原諸島"
+      },
+      {
+        "grade": "Watch",
+        "immediate": true,
+        "name": "高知県"
+      }
+    ],
+    "cancelled": false,
+    "code": 552,
+    "created_at": "2023/10/09 07:45:11.186",
+    "id": "652330f7f0f6de0007969e76",
+    "issue": {
+      "source": "気象庁",
+      "time": "2023/10/09 07:44:40",
+      "type": "Focus"
+    },
+    "time": "2023/10/09 07:44:40.671",
+    "timestamp": {
+      "convert": "2023/10/09 07:44:40.667",
+      "register": "2023/10/09 07:44:40.671"
+    },
+    "user_agent": "jmaxml-seis-parser-go, relay, register-api",
+    "ver": "20220813"
+  }
+]

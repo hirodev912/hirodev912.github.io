@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>WorldQuakeMonitoring</title>
+    <style>
+        body {
+            margin: 0;
+            color: #fff;
+            background: #000;
+            font-family: "SF Mono", "Monaco", "Inconsolata", "Fira Code", monospace;
+        }
+
+        p {
+            margin: 0;
+            width: fit-content;
+            height: fit-content;
+        }
+
+        .content {
+            position: relative;
+            border: 1px solid #555;
+            border-radius: 8px;
+            width: fit-content;
+            height: fit-content;
+        }
+
+        .nied_wrapper {
+            width: 528px;
+            height: 300px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .nied_monitor {
+            width: 264px;
+            height: 300px;
+            position: relative;
+        }
+
+        #eqlog,
+        #usgslog,
+        #tsunamilog {
+            background: #000;
+            display: block;
+            width: fit-content;
+            height: 300px;
+            overflow: auto;
+        }
+
+        #map {
+            width: 50vw;
+            height: 450px;
+        }
+
+        .loadimg {
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            z-index: -1;
+        }
+    </style>
+    <link rel="stylesheet" href="leaflet.css">
+</head>
+
+<body>
+    <p id="time"></p>
+    <div style="display: flex;">
+        <div class="content" id="nied_kyoshin">
+            <p>強震モニタ（地表・地中加速度）</p>
+            <div class="nied_wrapper">
+                <div class="nied_monitor" id="nied_kyoshin1">
+                    <img src="images/base_map_b.png" style="z-index: 0; position: absolute;" width="264" height="300">
+                    <img id="nied_image1" style="z-index: 10; position: absolute;" width="264" height="300">
+                    <img src="images/loading.gif" class="loadimg">
+                </div>
+                <div calss="nied_monitor" id="nied_kyoshin2">
+                    <img src="images/base_map_b.png" style="z-index: 0; position: absolute;" width="264" height="300">
+                    <img id="nied_image2" style="z-index: 10; position: absolute;" width="264" height="300">
+                    <img src="images/loading.gif" class="loadimg">
+                </div>
+            </div>
+        </div>
+        <div class="content" id="eqinfo">
+            <p>地震情報リスト（国内）</p>
+            <span id="eqlog"></span>
+            <img src="images/loading.gif" class="loadimg">
+        </div>
+        <div class="content" id="usgsinfo">
+            <p>地震情報リスト（世界）</p>
+            <div id="usgslog"></div>
+            <img src="images/loading.gif" class="loadimg">
+        </div>
+        <div class="content">
+            <p>NHKラジオ第一</p>
+            <iframe src="https://www.nhk.or.jp/radio/" width="350" height="295"></iframe>
+            <img src="images/loading.gif" class="loadimg">
+        </div>
+    </div>
+    <div style="display: flex;">
+        <div class="content" id="eqmap">
+            <p>震源分布図</p>
+            <div id="map"></div>
+            <img src="images/loading.gif" class="loadimg">
+        </div>
+        <div class="content" id="tsunamiinfo">
+            <p>津波情報</p>
+            <div id="tsunamilog" style="height: 450px;"></div>
+            <img src="images/loading.gif" class="loadimg">
+        </div>
+    </div>
+    <script src="leaflet.js"></script>
+    <script src="nied_monitor.js"></script>
+    <script src="eqmonitor.js"></script>
+    <script src="tsunamimonitor.js"></script>
+</body>
+
+</html>
