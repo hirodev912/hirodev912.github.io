@@ -18,6 +18,10 @@
             height: fit-content;
         }
 
+        #time {
+            font-size: 18px;
+        }
+
         .content {
             position: relative;
             border: 1px solid #555;
@@ -49,6 +53,14 @@
             overflow: auto;
         }
 
+        #eqlog, #usgslog {
+            min-width: 420px;
+        }
+
+        #tsunamilog {
+            min-width: 310px;
+        }
+
         #map {
             width: 50vw;
             height: 450px;
@@ -60,6 +72,12 @@
             left: 50%; 
             z-index: -1;
         }
+
+        .eq_tokei {
+            width: 223px;
+            height: 223px;
+            border: 1px solid #555;
+        }
     </style>
     <link rel="stylesheet" href="leaflet.css">
 </head>
@@ -68,7 +86,7 @@
     <p id="time"></p>
     <div style="display: flex;">
         <div class="content" id="nied_kyoshin">
-            <p>強震モニタ（地表・地中加速度）</p>
+            <p>強震モニタ（地表・地中震度）</p>
             <div class="nied_wrapper">
                 <div class="nied_monitor" id="nied_kyoshin1">
                     <img src="images/base_map_b.png" style="z-index: 0; position: absolute;" width="264" height="300">
@@ -108,6 +126,28 @@
             <p>津波情報</p>
             <div id="tsunamilog" style="height: 450px;"></div>
             <img src="images/loading.gif" class="loadimg">
+        </div>
+        <div class="content">
+            <p>統計情報</p>
+            <div class="eq_tokei">
+                <p>今日・昨日の有感地震</p>
+                <span id="count_today"></span>
+            </div>
+            <div class="eq_tokei">
+                <p>過去一か月</p>
+                <span id="count_total"></span>
+            </div>
+        </div>
+        <div class="content">
+            <p>統計グラフ</p>
+            <div class="eq_tokei">
+                <p>日別発生回数</p>
+                <canvas id="tokei_graph1" width="223" height="205"></canvas>
+            </div>
+            <div class="eq_tokei">
+                <p>震度別発生回数</p>
+                <canvas id="tokei_graph2" width="223" height="205"></canvas>
+            </div>
         </div>
     </div>
     <script src="leaflet.js"></script>
