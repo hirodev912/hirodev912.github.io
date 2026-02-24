@@ -9,9 +9,9 @@
     }).addTo(map);
     async function jmaeqlog() {
         const e = document.getElementById('eqlog');
-        e.innerHTML = "";
         const data = await fetch('https://www.jma.go.jp/bosai/quake/data/list.json', { cache: "no-store" });
         const r = await data.json();
+        e.innerHTML = "";
         const count_date = {};
         const count_shindo = { "1": 0, "2": 0, "3": 0, "4": 0, "5-": 0, "5+": 0, "6-": 0, "6+": 0, "7": 0 };
         let count_total = 0;
@@ -68,14 +68,14 @@
         document.getElementById('count_total').innerHTML = "合計:<span style='font-size: 36px;'>" + count_total + `</span>回<br>震度1:${count_shindo['1']}回<br>震度2:${count_shindo['2']}回<br>震度3:${count_shindo['3']}回<br>震度4:${count_shindo['4']}回<br>震度5弱:${count_shindo['5-']}回<br>震度5強:${count_shindo['5+']}回<br>震度6弱:${count_shindo['6-']}回<br>震度6強:${count_shindo['6+']}回<br>震度7:${count_shindo['7']}回`;
         let last_y = 190;
         graph1.clearRect(0, 0, 223, 205);
-        for (let i=0; i<45; i+=4) {
+        for (let i = 0; i < 190; i += 16) {
             graph1.font = '10px "SF Mono", "Monaco", "Inconsolata", "Fira Code", monospace';
             graph1.fillStyle = "#fff";
-            graph1.fillText(i, 0, 195 - i * 4);
+            graph1.fillText(i, 0, 193 - i);
             graph1.strokeStyle = "#fff";
             graph1.beginPath();
-            graph1.moveTo(10, 190 - i * 4);
-            graph1.lineTo(223, 190 - i * 4);
+            graph1.moveTo(10 + (i > 99) * 5, 190 - i);
+            graph1.lineTo(223, 190 - i);
             graph1.stroke();
         }
         for (let i = -30; i < 1; i++) {
@@ -92,8 +92,8 @@
             graph1.strokeStyle = "#2f2";
             graph1.beginPath();
             graph1.moveTo((i + 30) * 7, last_y);
-            graph1.lineTo((i + 30) * 7 + 7, 190 - count_date[date_shift] * 4);
-            last_y = 190 - count_date[date_shift] * 4;
+            graph1.lineTo((i + 30) * 7 + 7, 190 - count_date[date_shift]);
+            last_y = 190 - count_date[date_shift];
             graph1.stroke();
         }
         graph2.clearRect(0, 0, 223, 205);
@@ -104,15 +104,15 @@
             graph2.fillRect(o * 24, 190 * (1 - ratio), 22, 190 * ratio);
             graph2.fillStyle = "#fff";
             graph2.font = '13px "SF Mono", "Monaco", "Inconsolata", "Fira Code", monospace';
-            graph2.fillText(Math.round(ratio * 100) + "%", o * 24, 204);
+            graph2.fillText(Math.ceil(ratio * 100) + "%", o * 24, 204);
             o++;
         }
     }
     async function usgseqlog() {
         const e = document.getElementById('usgslog');
-        e.innerHTML = "";
         const data = await fetch('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson', { cache: "no-store" });
         const r = await data.json();
+        e.innerHTML = "";
         for (const d of r.features) {
             const span = document.createElement('span');
             const mag = (Math.round(d.properties.mag * 10)) / 10;
