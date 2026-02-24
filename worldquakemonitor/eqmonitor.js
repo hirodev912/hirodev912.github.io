@@ -68,6 +68,16 @@
         document.getElementById('count_total').innerHTML = "合計:<span style='font-size: 36px;'>" + count_total + `</span>回<br>震度1:${count_shindo['1']}回<br>震度2:${count_shindo['2']}回<br>震度3:${count_shindo['3']}回<br>震度4:${count_shindo['4']}回<br>震度5弱:${count_shindo['5-']}回<br>震度5強:${count_shindo['5+']}回<br>震度6弱:${count_shindo['6-']}回<br>震度6強:${count_shindo['6+']}回<br>震度7:${count_shindo['7']}回`;
         let last_y = 190;
         graph1.clearRect(0, 0, 223, 205);
+        for (let i=0; i<45; i+=4) {
+            graph1.font = '10px "SF Mono", "Monaco", "Inconsolata", "Fira Code", monospace';
+            graph1.fillStyle = "#fff";
+            graph1.fillText(i, 0, 195 - i * 4);
+            graph1.strokeStyle = "#fff";
+            graph1.beginPath();
+            graph1.moveTo(10, 190 - i * 4);
+            graph1.lineTo(223, 190 - i * 4);
+            graph1.stroke();
+        }
         for (let i = -30; i < 1; i++) {
             let date_shift = new Date();
             date_shift.setDate(date_shift.getDate() + i);
@@ -76,8 +86,6 @@
                 count_date[date_shift] = 0;
             }
             if (((i + 30) % 5) == 2) {
-                graph1.font = '10px "SF Mono", "Monaco", "Inconsolata", "Fira Code", monospace';
-                graph1.fillStyle = "#fff";
                 graph1.fillText(date_shift.substr(0, 2) + "/" + date_shift.substr(2, 2), (i + 30) * 7.43 - 12, 205);
             }
             graph1.stroke();
