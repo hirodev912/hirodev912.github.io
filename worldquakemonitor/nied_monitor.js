@@ -26,6 +26,7 @@ function updateImg() {
     document.getElementById('time').textContent = `${t[0]}/${t[1]}/${t[2]} ${t[3]}:${t[4]}:${t[5]}`;
     document.getElementById('nied_image1').src = `${host_server}data/map_img/RealTimeImg/jma_s/${t[0]}${t[1]}${t[2]}/${t[0]}${t[1]}${t[2]}${t[3]}${t[4]}${t[5]}.jma_s.gif`;
     document.getElementById('nied_image2').src = `${host_server}data/map_img/RealTimeImg/jma_b/${t[0]}${t[1]}${t[2]}/${t[0]}${t[1]}${t[2]}${t[3]}${t[4]}${t[5]}.jma_b.gif`;
+    document.getElementById('nied_image3').src = `${host_server}data/map_img/EstShindoImg/eew/${t[0]}${t[1]}${t[2]}/${t[0]}${t[1]}${t[2]}${t[3]}${t[4]}${t[5]}.eew.gif`;
 }
 setInterval(updateImg, 1000);
 setInterval(syncntptime, 3600000);

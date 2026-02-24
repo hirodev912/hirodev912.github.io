@@ -31,7 +31,7 @@
         }
 
         .nied_wrapper {
-            width: 528px;
+            width: 792px;
             height: 300px;
             display: flex;
             flex-direction: row;
@@ -77,6 +77,7 @@
             width: 223px;
             height: 223px;
             border: 1px solid #555;
+            overflow: auto;
         }
     </style>
     <link rel="stylesheet" href="leaflet.css">
@@ -86,16 +87,21 @@
     <p id="time"></p>
     <div style="display: flex;">
         <div class="content" id="nied_kyoshin">
-            <p>強震モニタ（地表・地中震度）</p>
+            <p>強震モニタ（地表・地中震度・予想震度＆予想円）</p>
             <div class="nied_wrapper">
                 <div class="nied_monitor" id="nied_kyoshin1">
                     <img src="images/base_map_b.png" style="z-index: 0; position: absolute;" width="264" height="300">
                     <img id="nied_image1" style="z-index: 10; position: absolute;" width="264" height="300">
                     <img src="images/loading.gif" class="loadimg">
                 </div>
-                <div calss="nied_monitor" id="nied_kyoshin2">
+                <div class="nied_monitor" id="nied_kyoshin2">
                     <img src="images/base_map_b.png" style="z-index: 0; position: absolute;" width="264" height="300">
                     <img id="nied_image2" style="z-index: 10; position: absolute;" width="264" height="300">
+                    <img src="images/loading.gif" class="loadimg">
+                </div>
+                <div class="nied_monitor" id="nied_kyoshin3">
+                    <img src="images/base_map_b.png" style="z-index: 0; position: absolute;" width="264" height="300">
+                    <img id="nied_image3" style="z-index: 10; position: absolute;" width="264" height="300">
                     <img src="images/loading.gif" class="loadimg">
                 </div>
             </div>
@@ -110,11 +116,7 @@
             <div id="usgslog"></div>
             <img src="images/loading.gif" class="loadimg">
         </div>
-        <div class="content">
-            <p>NHKラジオ第一</p>
-            <iframe src="https://www.nhk.or.jp/radio/" width="350" height="295"></iframe>
-            <img src="images/loading.gif" class="loadimg">
-        </div>
+        
     </div>
     <div style="display: flex;">
         <div class="content" id="eqmap">
@@ -130,22 +132,22 @@
         <div class="content">
             <p>統計情報</p>
             <div class="eq_tokei">
-                <p>今日・昨日の有感地震</p>
+                <p>過去三日間の有感地震</p>
                 <span id="count_today"></span>
             </div>
             <div class="eq_tokei">
-                <p>過去一か月</p>
+                <p>過去一か月の発生回数</p>
                 <span id="count_total"></span>
             </div>
         </div>
         <div class="content">
             <p>統計グラフ</p>
             <div class="eq_tokei">
-                <p>日別発生回数</p>
+                <p>日別発生回数推移</p>
                 <canvas id="tokei_graph1" width="223" height="205"></canvas>
             </div>
             <div class="eq_tokei">
-                <p>震度別発生回数</p>
+                <p>震度別発生率</p>
                 <canvas id="tokei_graph2" width="223" height="205"></canvas>
             </div>
         </div>

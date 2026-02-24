@@ -22,7 +22,7 @@
                 let text = "";
                 const mag = d.mag;
                 const time = d.eid.substr(6, 2) + "日" + d.eid.substr(8, 2) + "時" + d.eid.substr(10, 2) + "分発生";
-                text = time + " " + d.anm + " 最大震度" + ((d.maxi !== "") ? d.maxi.replace('-', '弱').replace('+', '強') : "不明") + " M" + ((mag !== "") ? mag : "不明") + "<br>";
+                text = "<hr>" + time + " " + d.anm + " 最大震度" + ((d.maxi !== "") ? d.maxi.replace('-', '弱').replace('+', '強') : "不明") + " M" + ((mag !== "") ? mag : "不明");
                 e.innerHTML += text;
                 if (d.ttl == "震源・震度情報") {
                     const latitude = Number(d.cod.substr(1, 4));
@@ -57,8 +57,14 @@
         if (count_date[date_yesterday] == null || count_date[date_yesterday] == undefined) {
             count_date[date_yesterday] = 0;
         }
+        let date_before_yesterday = new Date();
+        date_before_yesterday.setDate(date_before_yesterday.getDate() - 2);
+        date_before_yesterday = ('00' + (date_before_yesterday.getMonth() + 1)).slice(-2) + ('00' + date_before_yesterday.getDate()).slice(-2);
+        if (count_date[date_before_yesterday] == null || count_date[date_before_yesterday] == undefined) {
+            count_date[date_before_yesterday] = 0;
+        }
         const count_comp = count_date[date_now] - count_date[date_yesterday];
-        document.getElementById('count_today').innerHTML = "今日:<span style='font-size: 36px;'>" + count_date[date_now] + "</span>回<br>昨日:<span style='font-size: 36px;'>" + count_date[date_yesterday] + "</span>回<br>前日比:<span style='font-size: 36px;'>" + ((count_comp > 0) ? "+" : "") + count_comp + "</span>回";
+        document.getElementById('count_today').innerHTML = "今日:<span style='font-size: 36px;'>" + count_date[date_now] + "</span>回<br>昨日:<span style='font-size: 36px;'>" + count_date[date_yesterday] + "</span>回<br>一昨日:<span style='font-size: 36px;'>" + count_date[date_before_yesterday] + "</span>回<br>前日比:<span style='font-size: 36px;'>" + ((count_comp > 0) ? "+" : "") + count_comp + "</span>回";
         document.getElementById('count_total').innerHTML = "合計:<span style='font-size: 36px;'>" + count_total + `</span>回<br>震度1:${count_shindo['1']}回<br>震度2:${count_shindo['2']}回<br>震度3:${count_shindo['3']}回<br>震度4:${count_shindo['4']}回<br>震度5弱:${count_shindo['5-']}回<br>震度5強:${count_shindo['5+']}回<br>震度6弱:${count_shindo['6-']}回<br>震度6強:${count_shindo['6+']}回<br>震度7:${count_shindo['7']}回`;
         let last_y = 190;
         graph1.clearRect(0, 0, 223, 205);
@@ -104,7 +110,7 @@
             const mag = (Math.round(d.properties.mag * 10)) / 10;
             const fontcolor = (mag > 6.9) ? "#f00" : (mag > 5.9) ? "#ff0" : "#fff";
             span.style.color = fontcolor;
-            span.innerHTML = d.properties.title + "<br>";
+            span.innerHTML = "<hr>" + d.properties.title;
             e.append(span);
             L.circle([d.geometry.coordinates[1], d.geometry.coordinates[0]], {
                 radius: 1000 + mag * 5000,

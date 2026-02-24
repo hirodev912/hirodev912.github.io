@@ -4,7 +4,7 @@
     async function p2ptsunamilog() {
         const e = document.getElementById('tsunamilog');
         e.innerHTML = "<br>";
-        const data = await fetch('https://hiroshimacam.github.io/worldquakemonitor/tsunami.json', { cache: "no-store" });
+        const data = await fetch('https://api.p2pquake.net/v2/jma/tsunami', { cache: "no-store" });
         const r = await data.json();
         const t = r[0];
         let lastclass = null;
@@ -26,4 +26,5 @@
         }
     }
     await p2ptsunamilog();
+    setInterval(await p2ptsunamilog, 1000 * 60 * 3);
 })();
