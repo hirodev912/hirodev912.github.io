@@ -8,8 +8,8 @@ function syncntptime() {
     });
 }
 syncntptime();
-function getnowtime() {
-    const realtime = new Date(new Date() - 1600 + timeoffset);
+function getnowtime(late) {
+    const realtime = new Date(new Date() - late + timeoffset);
     const year = realtime.getFullYear();
     const month = ('00' + (realtime.getMonth() + 1)).slice(-2);
     const date = ('00' + realtime.getDate()).slice(-2);
@@ -19,13 +19,14 @@ function getnowtime() {
     return [year, month, date, hour, minute, second];
 }
 function updateImg() {
-    const t = getnowtime();
+    let t = getnowtime(0);
     if (t[4] == "59" && t[5] == "57") {
         signal_audio.play();
     }
     document.getElementById('time').textContent = `${t[0]}/${t[1]}/${t[2]} ${t[3]}:${t[4]}:${t[5]}`;
+    t = getnowtime(1600);
     document.getElementById('nied_image1').src = `${host_server}data/map_img/RealTimeImg/jma_s/${t[0]}${t[1]}${t[2]}/${t[0]}${t[1]}${t[2]}${t[3]}${t[4]}${t[5]}.jma_s.gif`;
-    document.getElementById('nied_image2').src = `${host_server}data/map_img/RealTimeImg/jma_b/${t[0]}${t[1]}${t[2]}/${t[0]}${t[1]}${t[2]}${t[3]}${t[4]}${t[5]}.jma_b.gif`;
+    document.getElementById('nied_image2').src = `https://www.lmoni.bosai.go.jp/monitor/data/data/map_img/RealTimeImg/abrspmx_s/${t[0]}${t[1]}${t[2]}/${t[0]}${t[1]}${t[2]}${t[3]}${t[4]}${t[5]}.abrspmx_s.gif`;
     document.getElementById('nied_image3').src = `${host_server}data/map_img/EstShindoImg/eew/${t[0]}${t[1]}${t[2]}/${t[0]}${t[1]}${t[2]}${t[3]}${t[4]}${t[5]}.eew.gif`;
     document.getElementById('nied_image4').src = `${host_server}data/map_img/PSWaveImg/eew/${t[0]}${t[1]}${t[2]}/${t[0]}${t[1]}${t[2]}${t[3]}${t[4]}${t[5]}.eew.gif`;
 }

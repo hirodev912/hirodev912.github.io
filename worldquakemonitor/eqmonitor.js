@@ -21,7 +21,7 @@
             if (d.ttl == "震源・震度情報" || d.ttl == "震源に関する情報" || d.ttl == "震度速報") {
                 let text = "";
                 const mag = d.mag;
-                const time = d.eid.substr(6, 2) + "日" + d.eid.substr(8, 2) + "時" + d.eid.substr(10, 2) + "分発生";
+                const time = d.eid.substr(6, 2) + "日" + d.eid.substr(8, 2) + "時" + d.eid.substr(10, 2) + "分";
                 text = "<hr>" + time + " " + d.anm + " 最大震度" + ((d.maxi !== "") ? d.maxi.replace('-', '弱').replace('+', '強') : "不明") + " M" + ((mag !== "") ? mag : "不明");
                 e.innerHTML += text;
                 if (d.ttl == "震源・震度情報") {

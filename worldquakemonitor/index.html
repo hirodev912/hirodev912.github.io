@@ -32,15 +32,15 @@
         }
 
         .nied_wrapper {
-            width: 792px;
-            height: 300px;
+            width: 1056px;
+            height: 400px;
             display: flex;
             flex-direction: row;
         }
 
         .nied_monitor {
-            width: 264px;
-            height: 300px;
+            width: 352px;
+            height: 400px;
             position: relative;
         }
 
@@ -50,7 +50,7 @@
             background: #000;
             display: block;
             width: fit-content;
-            height: 300px;
+            height: 400px;
             overflow: auto;
         }
 
@@ -89,22 +89,22 @@
     <p id="time"></p>
     <div style="display: flex;">
         <div class="content" id="nied_kyoshin">
-            <p>強震モニタ（地表・地中震度・予想震度＆予想円）</p>
+            <p>強震モニタ（地表・長周期地震動・予想震度＆予想円）</p>
             <div class="nied_wrapper">
                 <div class="nied_monitor" id="nied_kyoshin1">
-                    <img src="images/base_map_b.png" style="z-index: 0; position: absolute;" width="264" height="300">
-                    <img id="nied_image1" style="z-index: 10; position: absolute;" width="264" height="300">
+                    <img src="images/base_map_b.png" style="z-index: 0; position: absolute;" width="352" height="400">
+                    <img id="nied_image1" style="z-index: 10; position: absolute;" width="352" height="400">
                     <img src="images/loading.gif" class="loadimg">
                 </div>
                 <div class="nied_monitor" id="nied_kyoshin2">
-                    <img src="images/base_map_b.png" style="z-index: 0; position: absolute;" width="264" height="300">
-                    <img id="nied_image2" style="z-index: 10; position: absolute;" width="264" height="300">
+                    <img src="images/base_map_b.png" style="z-index: 0; position: absolute;" width="352" height="400">
+                    <img id="nied_image2" style="z-index: 10; position: absolute;" width="352" height="400">
                     <img src="images/loading.gif" class="loadimg">
                 </div>
                 <div class="nied_monitor" id="nied_kyoshin3">
-                    <img src="images/base_map_b.png" style="z-index: 0; position: absolute;" width="264" height="300">
-                    <img id="nied_image3" style="z-index: 10; position: absolute;" width="264" height="300">
-                    <img id="nied_image4" style="z-index: 20; position: absolute;" width="264" height="300">
+                    <img src="images/base_map_b.png" style="z-index: 0; position: absolute;" width="352" height="400">
+                    <img id="nied_image3" style="z-index: 10; position: absolute;" width="352" height="400">
+                    <img id="nied_image4" style="z-index: 20; position: absolute;" width="352" height="400">
                     <img src="images/loading.gif" class="loadimg">
                 </div>
             </div>
@@ -155,6 +155,7 @@
             </div>
         </div>
     </div>
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script src="leaflet.js"></script>
     <script src="nied_monitor.js"></script>
     <script src="eqmonitor.js"></script>
