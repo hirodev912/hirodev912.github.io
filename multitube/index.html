@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Multitube</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .player {
+            border: 1px solid #000;
+            width: fit-content;
+            height: fit-content;
+        }
+
+        .frame {
+            border: 1px solid #000;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="doubleplay">同時再生</button>
+    <div class="player">
+        <p>
+            <input id="url1" type="text" size="9">
+            <button id="play1">再生</button>
+        </p>
+        <iframe class="frame" id="frame1" width="300" height="225" title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="player">
+        <p>
+            <input id="url2" type="text" size="9">
+            <button id="play2">再生</button>
+        </p>
+        <iframe class="frame" id="frame2" width="300" height="225" title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <script>
+        function start(playerNum, videoId) {
+            document.getElementById(`frame${playerNum}`).src = "https://www.youtube-nocookie.com/embed/" + videoId + "?autoplay=1&amp;mute=1";
+        }
+        for (let i = 1; i < 3; i++) {
+            document.getElementById(`play${i}`).addEventListener('click', function () {
+                start(i, document.getElementById(`url${i}`).value);
+            });
+        }
+        document.getElementById('doubleplay').addEventListener('click', function () {
+            for (let i = 1; i < 3; i++) {
+                start(i, document.getElementById(`url${i}`).value);
+            }
+        });
+    </script>
+</body>
+
+</html>
