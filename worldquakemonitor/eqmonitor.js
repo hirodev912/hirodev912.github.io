@@ -1,6 +1,10 @@
+import { supportspeech, enablespeak } from "./setup.js";
 (async () => {
     const eqm_backColor = { "1": "rgb(142, 142, 155)", "2": "rgb(0, 170, 255)", "3": "rgb(0, 65, 255)", "4": "rgb(250, 160, 110)", "5-": "rgb(255, 120, 0)", "5+": "rgb(230, 90, 0)", "6-": "rgb(255, 40, 0)", "6+": "rgb(165, 0, 33)", "7": "rgb(180, 0, 104)" };
+    const sokuho_audio = new Audio(), singen_audio = new Audio(), scale_audio = new Audio();
+    sokuho_audio.src = "sounds/sokuho.mp3", singen_audio.src = "sounds/singen.mp3", scale_audio.src = "sounds/scale.mp3";
     const map = L.map('map').setView([38.40, 136], 5);
+    let lastctt = null;
     const eqlayer = L.layerGroup().addTo(map);
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
@@ -21,6 +25,12 @@
         const graph2 = document.getElementById('tokei_graph2').getContext('2d');
         const graph3 = document.getElementById('tokei_graph3').getContext('2d');
         const graph4 = document.getElementById('tokei_graph4').getContext('2d');
+        if (lastctt !== r[0].ctt && lastctt !== null) {
+            if (r[0].ttl == "震源・震度情報") scale_audio.play();
+            if (r[0].ttl == "震源に関する情報") singen_audio.play();
+            if (r[0].ttl == "震度速報") sokuho_audio.play();
+        }
+        lastctt = r[0].ctt;
         for (const d of r) {
             if (d.ttl == "震源・震度情報" || d.ttl == "震源に関する情報" || d.ttl == "震度速報") {
                 let text = "";
@@ -36,9 +46,9 @@
                     if (count_date[date] == null) count_date[date] = 0;
                     count_date[date]++;
                     count_total++;
-                    if (count_shindo[maxi] == null)  count_shindo[maxi] = 0;
+                    if (count_shindo[maxi] == null) count_shindo[maxi] = 0;
                     if (count_magnitude[mag.substr(0, 1)] == null || count_magnitude[mag.substr(0, 1)] == undefined) count_magnitude[mag.substr(0, 1)] = 0;
-                    count_magnitude[mag.substr(0, 1)] ++;
+                    count_magnitude[mag.substr(0, 1)]++;
                     count_shindo[maxi]++;
                     L.circle([latitude, longitude], {
                         radius: 1000 + mag * 5000,

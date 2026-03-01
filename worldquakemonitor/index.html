@@ -19,8 +19,18 @@
             height: fit-content;
         }
 
+        #menu_top {
+            display: flex;
+            width: 100%;
+            height: 18px;
+        }
+
         #time {
             font-size: 18px;
+        }
+
+        #voices {
+            height: 18px;
         }
 
         .content {
@@ -95,7 +105,14 @@
 </head>
 
 <body>
-    <p id="time"></p>
+    <div id="menu_top">
+        <p id="time"></p>
+        <div id="menu">
+            <img id="speaker" src="images/mute.png" height="18">
+            <select id="voices"></select>
+        </div>
+        <button id="testspeech">テスト</button>
+    </div>
     <div style="display: flex;">
         <div class="content" id="nied_kyoshin">
             <p>強震モニタ（地表・長周期地震動・予想震度＆予想円）</p>
@@ -176,12 +193,12 @@
             </div>
         </div>
     </div>
-    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="setup.js" type="module"></script>
     <script src="leaflet.js"></script>
-    <script src="nied_monitor.js"></script>
-    <script src="eew.js"></script>
-    <script src="eqmonitor.js"></script>
-    <script src="tsunamimonitor.js"></script>
+    <script src="nied_monitor.js" type="module"></script>
+    <script src="eew.js" type="module"></script>
+    <script src="eqmonitor.js" type="module"></script>
+    <script src="tsunamimonitor.js" type="module"></script>
 </body>
 
 </html>

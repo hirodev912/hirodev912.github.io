@@ -1,7 +1,8 @@
+import { enablespeak, startspeech } from "./setup.js";
 const host_server = "https://smi.lmoniexp.bosai.go.jp/";
 let timeoffset = 0;
 const signal_audio = new Audio();
-signal_audio.src = "signal.mp3";
+signal_audio.src = "sounds/signal.mp3";
 function syncntptime() {
     fetch('https://api.wolfx.jp/ntp.json').then(r => r.json()).then(r => {
         timeoffset = r.timestamp - Date.now();
@@ -20,9 +21,8 @@ function getnowtime(late) {
 }
 function updateImg() {
     let t = getnowtime(0);
-    if (t[4] == "59" && t[5] == "57") {
-        signal_audio.play();
-    }
+    if (t[4] == "59" && t[5] == "57") signal_audio.play();
+    if (t[4] == "00" && t[5] == "02" && enablespeak) startspeech(Number(t[3]) + "時です。"); 
     document.getElementById('time').textContent = `${t[0]}/${t[1]}/${t[2]} ${t[3]}:${t[4]}:${t[5]}`;
     t = getnowtime(1600);
     document.getElementById('nied_image1').src = `${host_server}data/map_img/RealTimeImg/jma_s/${t[0]}${t[1]}${t[2]}/${t[0]}${t[1]}${t[2]}${t[3]}${t[4]}${t[5]}.jma_s.gif`;
