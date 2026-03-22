@@ -1,1 +1,112 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+    <title>EQnotifier</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            background: #888;
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+        }
+
+        ol {
+            counter-reset: counter;
+            list-style-type: none;
+        }
+
+        h2 {
+            color: #000;
+            background: #bbb;
+            border: 1px solid #333;
+        }
+
+        h3 {
+            color: #222;
+            background: #aaa;
+            border: 1px solid #333;
+        }
+
+        #wrapper {
+            display: block;
+            position: absolute;
+            width: 60%;
+            left: 20%;
+            background: #fff;
+        }
+
+        #header {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <h1>EQnotifier</h1>
+            <p>緊急地震速報を受信・通知する拡張機能です。
+                リアルタイムで緊急地震速報を受信し、デスクトップ上に通知します。</p>
+        </div>
+        <div id="contents">
+            <ul>
+                <li><a href="#install">インストール</a></li>
+                <li><a href="#notification">通知</a></li>
+                <li><a href="#icon">アイコン</a></li>
+                <li><a href="#setting">設定</a>
+                    <ul>
+                        <li><a href="#autoremove">自動消去</a></li>
+                        <li><a href="#filter">通知条件の絞り込み</a></li>
+                        <li><a href="#tweet">ツイート</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div id="install">
+            <h2>インストール方法</h2>
+            <p>拡張機能のインストールは<a
+                    href="https://chromewebstore.google.com/detail/eqnotifier/jkmdaojoifhnajfajciacejhfgccgmmp">chromeウェブストアのページ</a>から行います。インストールが完了すると自動で実行されます。
+            </p>
+            <p><img src="image/ex_icon.png" width="60">ブラウザ画面内右上の←のアイコンをクリックして、必要に応じてピン留めしてください。</p>
+        </div>
+        <div id="notification">
+            <h2>通知ウィンドウ</h2>
+            <img src="image/notification_sample.png" width="300">
+            <p>緊急地震速報が発表されると↑のような通知画面がウィンドウ内に表示されます。クリックすると消えます。</p>
+        </div>
+        <div id="icon">
+            <h2>アイコンでのステータス表示</h2>
+            <p><img src="image/icon_default.png" width="36"><strong>通常状態</strong><br>　　何も起こってないときはこの色です。</p>
+            <p><img src="image/icon_eew.gif" width="36"><strong>緊急地震速報発表時</strong><br>　　発表から1分間点滅を繰り返します。</p>
+            <p><img src="image/icon_error.png"
+                    width="36"><strong>エラー発生時</strong><br>　　WebSocketが切断された時やエラーが発生したときはこの色になります。拡張機能をリロードすることでエラーが解消されることがあります。
+            </p>
+        </div>
+        <div id="setting">
+            <h2>設定ウィンドウ</h2>
+            <img src="image/settingwindow.png">
+            <p>拡張機能のアイコンをクリックすると設定ウィンドウが開きます。</p>
+            <div id="autoremove">
+                <h3>通知を自動で消す</h3>
+                <p>「表示から3秒後に自動で通知を消す」の項目にチェックを入れると自動で通知が消えます。通知センターに通知を残したくない場合におすすめです。</p>
+            </div>
+            <div id="filter">
+                <h3>通知条件を絞り込む</h3>
+                <ul>
+                    <li>「震度変化時のみ通知」にチェックを入れると、最大震度が変化した時にだけ通知されます。通知が多くて煩い時はチェックを入れてみてください。</li>
+                    <li>「震度○以上で通知」の値を変えると、指定された震度以上の情報だけを通知するようになります。</li>
+                    <li>「マグニチュード○以下の時は半径○KM以内の地震だけ通知」の値を変えると、指定したマグニチュード以下の情報は、設定された緯度・経度と震源地の距離が基準以下の時だけ通知されます。</li>
+                </ul>
+            </div>
+            <div id="tweet">
+                <h3>ツイート機能</h3>
+                <img src="image/tweet.png" width="300">
+                <p>「ツイートボタンを表示する」にチェックを入れると、通知に「ツイートする」と書かれたボタンが追加されます。そこをクリックするとTwitterのツイート画面に飛びます。</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
