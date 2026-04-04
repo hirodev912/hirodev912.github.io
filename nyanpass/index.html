@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>にゃんぱすーボタン（仮）</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <style>
+        body {
+            background-image: url(backimg.jpg);
+            background-position: center bottom;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 440px;
+            height: 312px;
+            margin-left: -220px;
+            margin-top: -156px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        #button {
+            display: inline-block;
+            background: #c8c0da;
+            color: #796bae;
+            cursor: pointer;
+            padding: 20px;
+            font-size: 50px;
+        }
+
+        #total {
+            font-size: 70px;
+            color: #e75297;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        #about {
+            margin-top: 30px;
+            color: #fff;
+            user-select: none;
+        }
+
+        #info {
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="button">にゃんぱすー</div>
+        <div id="total">--------</div>
+        <div id="about">INFO</div>
+    </div>
+    <div id="info">
+        <span>本家にゃんぱすーボタンが使えなくなっていたのでcloudworkersの勉強も兼ねて作ってみました。（まだよく分かってない）<br>本家が復活したら消滅するかも。なんか問題があったら消します。</span>
+    </div>
+    <script>
+        let statusofinfo = "none";
+        async function getcount() {
+            const countdata = await fetch("https://counter.hirodev0912.workers.dev/"), countjson = await countdata.json(), count = String(countjson.count);
+            let countstring;
+            countstring = "0".repeat(8 - count.length) + count;
+            document.getElementById("total").innerHTML = countstring;
+            const audio = new Audio();
+            audio.src = "nyanpass.wav";
+            audio.play();
+        }
+        function displayinfo() {
+            if (statusofinfo == "none") {
+                document.getElementById("info").style.display = "block";
+                statusofinfo = "block";
+            } else {
+                document.getElementById("info").style.display = "none";
+                statusofinfo = "none";
+            }
+        }
+        document.getElementById("button").addEventListener('click', getcount);
+        document.getElementById("about").addEventListener('click', displayinfo);
+    </script>
+</body>
+
+</html>
