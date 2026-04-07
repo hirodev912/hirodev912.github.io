@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #canvas {
+            position: absolute;
+            background: #555;
+            border: 1px solid #f00;
+        }
+
+        #play {
+            position: absolute;
+            left: 200px;
+            top: 150px;
+            color: #fff;
+            background: #000;
+            border: 1px solid #00f;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="400" height="300"></canvas>
+    <span id="play" onclick="start();">PLAY</span>
+    <script>
+        const can = document.getElementById("canvas"), ctx = can.getContext("2d");
+        let maininterval, base_x = can.width / 2, ball_x = base_x + 35, ball_y = can.height - 30, ball_increment_x = Math.random() * 20 - 10, ball_increment_y = -4, base_moving_left = false, base_moving_right = false, score = 0, cleared;
+        function setup() {
+            maininterval, base_x = can.width / 2, ball_x = base_x + 35, ball_y = can.height - 30, ball_increment_x = Math.random() * 20 - 10, ball_increment_y = -4, base_moving_left = false, base_moving_right = false, score = 0, closed = false;
+            ctx.fillStyle = "#0ff", ctx.strokeStyle = "#000";
+            mapmaking();
+        }
+        function mapmaking() {
+            ctx.clearRect(0, 0, can.width, can.height);
+            ctx.lineWidth = 15;
+            ctx.strokeRect(7, 7, 386, 400);
+            for (let i = 0; i < 4; i++) {
+                ctx.fillRect(30, 30 + i * 40, 335, 10);
+            }
+        }
+        function draw() {
+            ctx.fillStyle = "#ff0";
+            ctx.fillRect(base_x, can.height - 30, 70, 20);
+        }
+        document.body.addEventListener("keydown", (e) => {
+            if (e.key == "ArrowRight") base_moving_right = true;
+            if (e.key == "ArrowLeft") base_moving_left = true;
+        });
+        document.body.addEventListener("keyup", (e) => {
+            if (e.keyCode == 39) base_moving_right = false;
+            if (e.keyCode == 37) base_moving_left = false;
+        });
+        function basemove() {
+            ctx.clearRect(base_x, can.height - 30, 70, 20);
+            if (base_moving_left) {
+                for (let i = 0; i < 12; i++) {
+                    if (base_x > 15) base_x--;
+                }
+            }
+            if (base_moving_right) {
+                for (let i = 0; i < 12; i++) {
+                    if (base_x < 315) base_x++;
+                }
+            }
+        }
+        function ballmove() {
+            ctx.fillStyle = "#f00";
+            if (!cleared) ctx.clearRect(ball_x, ball_y, 10, 10);
+            cleared = false;
+            ball_x += Math.floor(ball_increment_x);
+            ball_y += Math.floor(ball_increment_y);
+            if (ball_x < 15) {
+                ball_x = 16;
+                ball_increment_x = ball_increment_x * -1 + 0.5;
+            }
+            if (ball_x > 375) {
+                ball_x = 375;
+                ball_increment_x = ball_increment_x * -1 - 0.5;
+            }
+            if (ball_y < 20) {
+                ball_y = 20;
+                ball_increment_y = 4;
+            }
+            if (ball_y > can.height - 40) {
+                if (ball_y < can.height - 15) {
+                    if (Math.abs((base_x + 35) - ball_x) < 40) {
+                        ball_increment_y = -4;
+                        ball_increment_x = (ball_x - (base_x + 35)) / 10;
+                        while (Math.abs(ball_increment_x) < 1) {
+                            ball_increment_x += 0.5;
+                        }
+                    }
+                } else {
+                    clearInterval(maininterval);
+                    document.getElementById("play").style.display = "block";
+                }
+            }
+            const color = ctx.getImageData(ball_x, ball_y, 10, 10).data;
+            let bounded = false;
+            ctx.fillRect(ball_x, ball_y, 10, 10);
+            for (let i = 0; i < 100; i++) {
+                if (color[i * 4] == 0 && color[i * 4 + 1] == 255 && color[i * 4 + 2] == 255 && !bounded) {
+                    ball_increment_y = ball_increment_y * -1;
+                    bounded = true;
+                    ctx.clearRect(ball_x - 10, ball_y - 10, 21, 21);
+                    cleared = true;
+                }
+            }
+        }
+        function main() {
+            basemove();
+            ballmove();
+            draw();
+        }
+        function start() {
+            maininterval = setInterval(main, 20);
+            setup();
+            document.getElementById("play").style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
