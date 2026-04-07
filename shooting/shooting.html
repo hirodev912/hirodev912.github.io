@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #canvas {
+            background: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="600" height="700"></canvas>
+    <script>
+        const can = document.getElementById("canvas"), ctx = can.getContext('2d'), width = can.width, height = can.height, missileaudio = new Audio(), bombaudio = new Audio();
+        let star_pos = [], mymove = { x: 0, y: 0 }, mypos = { x: 150, y: 350 }, shooting = false, missiles = [], missileintval = 0, enemiesintval = 0, shotinterval = 0, enemies = [], shots = [], mainloop;
+        missileaudio.src = "beem.mp3", bombaudio.src = "bomb.mp3";
+        for (let i = 0; i < 60; i++) {
+            star_pos[i] = { x: Math.random() * width, y: Math.random() * height, speed: Math.random() * 4 + 4 };
+        }
+        function scrool() {
+            for (let i = 0; i < 60; i++) {
+                star_pos[i].y += star_pos[i].speed;
+                if (star_pos[i].y > height) star_pos[i] = { x: Math.random() * width, y: 0, speed: Math.random() * 4 + 4 };
+                ctx.fillStyle = "#fff";
+                ctx.fillRect(star_pos[i].x, star_pos[i].y, 1, 1);
+            }
+        }
+        function keyreception(key) {
+            console.log(key)
+            if (key.key == "ArrowRight") mymove.x = 8;
+            if (key.key == "ArrowLeft") mymove.x = -8;
+            if (key.key == "ArrowUp") mymove.y = -8;
+            if (key.key == "ArrowDown") mymove.y = 8;
+            if (key.key == " ") shooting = true;
+        }
+        function keyreject(key) {
+            if (key.key == "ArrowRight") mymove.x = 0;
+            if (key.key == "ArrowLeft") mymove.x = 0;
+            if (key.key == "ArrowUp") mymove.y = 0;
+            if (key.key == "ArrowDown") mymove.y = 0;
+            if (key.key == " ") shooting = false;
+        }
+        function mainmove() {
+            mypos.x += mymove.x;
+            mypos.y += mymove.y;
+            if (mypos.x < 0) mypos.x = 0;
+            if (mypos.x > width - 20) mypos.x = width - 20;
+            if (mypos.y < 0) mypos.y = 0;
+            if (mypos.y > height - 40) mypos.y = height - 40;
+            ctx.fillStyle = "#f00";
+            ctx.fillRect(mypos.x, mypos.y, 15, 15);
+            if (shooting && missileintval == 0) {
+                missiles.push({ x: mypos.x, y: mypos.y - 15, movex: 0, movey: -10 });
+                missiles.push({ x: mypos.x, y: mypos.y - 15, movex: -3, movey: -10 });
+                missiles.push({ x: mypos.x, y: mypos.y - 15, movex: 3, movey: -10 });
+                missileaudio.pause();
+                missileaudio.currentTime = 0;
+                missileaudio.play();
+            }
+        }
+        function missilesmove() {
+            missileintval++;
+            if (missileintval == 5) missileintval = 0;
+            missiles.forEach((pos, num) => {
+                pos.x += pos.movex;
+                pos.y += pos.movey;
+                if (pos.y < 0) missiles.splice(num, 1);
+                ctx.fillStyle = "#088";
+                ctx.fillRect(pos.x, pos.y, 20, 20);
+                ctx.clearRect(pos.x + 5, pos.y, 10, 20);
+                enemies.forEach((epos, rnum) => {
+                    if (Math.abs(pos.x - epos.x) < 20 && Math.abs(pos.y - epos.y) < 20) {
+                        enemies.splice(rnum, 1);
+                        missiles.splice(num, 1);
+                        bombaudio.pause();
+                        bombaudio.currentTime = 0.1;
+                        bombaudio.play();
+                    }
+                });
+            });
+        }
+        function addenemy() {
+            enemiesintval++;
+            if (enemiesintval == 8) enemiesintval = 0;
+            if (enemiesintval == 1) enemies.push({ x: Math.random() * width, y: 0, movex: Math.random() * 10 - 5, movey: 3 });
+        }
+        function enemiesmove() {
+            enemies.forEach((pos, num) => {
+                pos.x += pos.movex;
+                pos.y += pos.movey;
+                ctx.fillStyle = "#ff0";
+                ctx.fillRect(pos.x, pos.y, 20, 20);
+                if (pos.y > height) enemies.splice(num, 1);
+                if (Math.abs(mypos.x - pos.x) < 20 && Math.abs(mypos.y - pos.y) < 20) clearInterval(mainloop);
+            });
+        }
+        function addshot() {
+            shotinterval++;
+            if (shotinterval == 1) shotinterval = 0;
+            if (shotinterval == 0) {
+                const enemynum = Math.trunc(Math.random() * enemies.length);
+                const shotpos = enemies[enemynum];
+                let movex = (mypos.x - shotpos.x) / 40, movey = (mypos.y - shotpos.y) / 40;
+                if (Math.abs(movex) > 6 || Math.abs(movey > 6)) {
+                    while (!(Math.abs(movex) < 6 && Math.abs(movey) < 6)) {
+                        movex = movex / 2;
+                        movey = movey / 2;
+                    }
+                }
+                while (Math.abs(movex) < 6 && Math.abs(movey) < 6) {
+                        movex = movex * 1.1;
+                        movey = movey * 1.1;
+                    }
+                shots.push({ x: shotpos.x, y: shotpos.y, movex: movex, movey: movey });
+            }
+        }
+        function shotmove() {
+            shots.forEach((pos, num) => {
+                pos.x += pos.movex;
+                pos.y += pos.movey;
+                ctx.fillStyle = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+                ctx.fillRect(pos.x, pos.y, 8, 8);
+                if (pos.x < 0 || pos.x > width || pos.y < 0 || pos.y > height) shots.splice(num, 1);
+                if (Math.abs((mypos.x + 10) - (pos.x + 4)) < 10 && Math.abs((mypos.y + 10) - (pos.y + 4)) < 10) clearInterval(mainloop);
+            });
+        }
+        function main() {
+            ctx.clearRect(0, 0, width, height);
+            scrool();
+            mainmove();
+            missilesmove();
+            addenemy();
+            enemiesmove();
+            addshot();
+            shotmove();
+        }
+        mainloop = setInterval(main, 20);
+        document.body.addEventListener("keydown", keyreception);
+        document.body.addEventListener("keyup", keyreject);
+    </script>
+</body>
+
+</html>
