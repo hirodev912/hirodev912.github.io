@@ -22,7 +22,7 @@ const eqm_backColors = {
         "6+": 7,
         "7": 8
     },
-    iconcan = document.createElement("canvas"), iconctx = iconcan.getContext("2d"), eqinfo = $("#eqinfo"), eqlist = $("#eqlist"), shindoimages = {};
+    iconcan = document.createElement("canvas"), iconctx = iconcan.getContext("2d"), eqlist = $("#eqlist"), shindoimages = {};
 iconcan.width = 200, iconcan.height = 200;
 for (const [num, backcolor] of Object.entries(eqm_backColors)) {
     iconctx.clearRect(0, 0, 200, 200);
@@ -44,7 +44,7 @@ function syncntptime() {
         })
 }
 function updateshindoimg() {
-    const realtime = new Date(Date.now() + timeoffset - 1500);
+    const realtime = new Date(Date.now() + timeoffset - 1800);
     const year = realtime.getFullYear();
     const month = ('00' + (realtime.getMonth() + 1)).slice(-2);
     const date = ('00' + realtime.getDate()).slice(-2);
@@ -79,7 +79,7 @@ function updateeqinfo() {
             if (eq.ttl == "震源・震度情報") {
                 const hypo = eq.anm, maxi = eq.maxi, mag = eq.mag, time = eq.at.substr(5).replace("T", " ").replace("+09:00", "");
                 const $span = $("<span></span>", {
-                    html: `<span style="font-weight: bold;">${hypo}</span><br>${time} M${mag} 最大震度${maxi}<hr>`,
+                    html: `<span style="font-weight: bold;">${hypo}</span><br>${time} M${mag} <span style='color: ${eqm_backColors[maxi]}'>最大震度${maxi}</span><hr>`,
                     class: "eqspan"
                 });
                 $span.on("click", function () {
@@ -95,13 +95,9 @@ function updateeqinfo() {
 function drawshindoicon(r, num) {
     $.ajax({ url: "https://www.jma.go.jp/bosai/quake/data/" + r[num].json }).done((r) => {
         iconlayer.clearLayers();
-        eqinfo.html(`Earthquake<br><br>Time: ${r.Body.Earthquake.OriginTime.replace("T", " ").replace(":00+09:00", "")}<br><br>Hypocenter: ${r.Body.Earthquake.Hypocenter.Area.Name}<br>EnglishName:   ${r.Body.Earthquake.Hypocenter.Area.enName}<br><br>Maxintensity: ${r.Body.Intensity.Observation.MaxInt}<br><br>Magnitude: ${r.Body.Earthquake.Magnitude}<br><br>`);
         r.Body.Intensity.Observation.Pref.forEach((pref, prefnum) => {
-            eqinfo.append(pref.Name + "<br>");
             pref.Area.forEach((area, areanum) => {
-                eqinfo.append("　" + area.Name + "<br>");
                 area.City.forEach((city, citynum) => {
-                    eqinfo.append("　　" + city.Name + ":震度" + city.MaxInt + "<br>");
                     city.IntensityStation.forEach((int, intnum) => {
                         const marker = L.icon({
                             iconUrl: (int.Int.length > 2) ? shindoimages["fumei"] : shindoimages[int.Int],
@@ -111,16 +107,24 @@ function drawshindoicon(r, num) {
                             shadowAnchor: [10, 10]
                         });
                         L.marker([int.latlon.lat, int.latlon.lon], { icon: marker, zIndexOffset: (Number(int.Int.substr(0, 1)) * 10 + (int.Int.substr(1, 1) == "+") * 5) * 20 }).addTo(iconlayer).bindPopup(int.Name);
-                        if (prefnum == 0 && areanum == 0 && citynum == 0 && intnum == 0) map.setView([int.latlon.lat, int.latlon.lon], 6);
+                        if (prefnum == 0 && areanum == 0 && citynum == 0 && intnum == 0) {
+                            map.setView([int.latlon.lat, int.latlon.lon], 8);
+                            const hypomarker = L.icon({
+                                iconUrl: "images/hypo.gif",
+                                iconSize: [32, 32],
+                                iconAnchor: [16, 16]
+                            });
+                            L.marker([r.Body.Earthquake.Hypocenter.Area.Coordinate.substr(1, 4), r.Body.Earthquake.Hypocenter.Area.Coordinate.substr(6, 5)], { icon: hypomarker, zIndexOffset: 9999 }).addTo(iconlayer);
+                        }
                     });
                 });
             });
         });
-    })
+    });
 }
 function updateweatherforecast() {
     $.ajax({ url: "https://www.jma.go.jp/bosai/forecast/data/forecast/010000.json" }).done((r) => {
-        weathertelop = "今日の天気:";
+        weathertelop = (r[0].srf.timeSeries[2].timeDefines[0].substr(5, 5).replace("-", "月")) + "日の天気:";
         r.forEach(e => {
             let name = e.srf.timeSeries[2].areas.area.name, mintemp = e.srf.timeSeries[2].areas.temps[0], maxtemp = e.srf.timeSeries[2].areas.temps[1];
             if (mintemp == maxtemp) mintemp = "--";
@@ -133,6 +137,7 @@ updateweatherforecast();
 syncntptime();
 updateeqinfo();
 updateeew("--", "--", "--", "--", "--");
+setInterval(updateeqinfo, 1000 * 40);
 setInterval(updateshindoimg, 1000);
 setInterval(updateeew, 5000);
 mapsetup();
