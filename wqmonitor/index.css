@@ -1,0 +1,154 @@
+body {
+    color: #fff;
+    background: #000;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    font-family: Meiryo, "Noto Sans JP", sans-serif;
+}
+
+#mainwrapper {
+    width: 100vw;
+    background: #000;
+    height: 100vh;
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.eqspan:hover {
+    color: #002;
+    background: #ddf;
+}
+
+#wrapper1,
+#wrapper2 {
+    display: flex;
+    user-select: none;
+}
+
+#kyoshin {
+    position: relative;
+    width: 352px;
+    height: 400px;
+}
+
+#tubelive {
+    width: 704px;
+    display: flex;
+}
+
+#frame1,
+#frame2 {
+    display: grid;
+}
+
+#basemap {
+    position: absolute;
+    z-index: 0;
+}
+
+#shindoimg {
+    position: absolute;
+    z-index: 10;
+}
+
+#eew,
+#eqinfo,
+#eqlist {
+    width: 352px;
+    height: 400px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    overflow: auto;
+}
+
+#eqmap {
+    width: 704px;
+    height: 500px;
+    position: relative;
+    z-index: 15 !important;
+}
+
+#eqlist,
+#eqinfo {
+    height: 498px;
+}
+
+.leaflet-layer,
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out,
+.leaflet-control-attribution {
+    filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+
+#telop {
+    width: 1408px;
+    font-size: 17px;
+    height: 21px;
+    color: #fff;
+    background: #222;
+    display: inline-block;
+    white-space: nowrap;
+    z-index: 20;
+}
+
+#telop li {
+    white-space: nowrap;
+    z-index: 20;
+}
+
+/* liScroll styles */
+
+.tickercontainer {
+    /* the outer div with the black border */
+    border: 1px solid #000;
+    background: #222;
+    height: 21px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    z-index: 20;
+}
+
+.tickercontainer .mask {
+    /* that serves as a mask. so you get a sort of padding both left and right */
+    position: relative;
+    left: 0px;
+    top: 0px;
+    overflow: hidden;
+}
+
+ul.newsticker {
+    /* that's your list */
+    position: relative;
+    left: 750px;
+    font: bold 10px Verdana;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+}
+
+ul.newsticker li {
+    float: left;
+    /* important: display inline gives incorrect results when you check for elem's width */
+    margin: 0;
+    padding: 0;
+    background: #222;
+}
+
+ul.newsticker a {
+    white-space: nowrap;
+    padding: 0;
+    color: #ff0000;
+    font: bold 10px Verdana;
+    margin: 0 0 0 0;
+}
+
+ul.newsticker span {
+    margin: 0 0 0 0;
+}
