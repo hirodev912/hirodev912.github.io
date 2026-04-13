@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>地震監視モニタ</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="leaflet.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="http://fonts.googleapis.com/earlyaccess/notosansjp.css">
+</head>
+
+<body>
+    <div id="mainwrapper"></div>
+    <div id="wrapper1">
+        <div id="eqlist"></div>
+        <div id="eqmap"></div>
+    </div>
+
+    <div id="wrapper2">
+        <div id="kyoshin">
+            <img id="basemap" src="images/base_map_b.gif" width="352" height="400">
+            <img id="shindoimg" width="352" height="400">
+        </div>
+
+        <div id="tubevideos">
+            <div id="videogroup1">
+                <iframe style="width: 50%; height: 50%;"
+                    src="https://www.youtube-nocookie.com/embed/rvtygG4n6ew?si=KWnW_FxuC_wWHUuW"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe style="width: 50%; height: 50%;"
+                    src="https://www.youtube-nocookie.com/embed/ZeZ049BUy8Q?si=jKPNpKuxRzwOyNKB"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div id="videogroup2">
+                <iframe style="width: 50%; height: 50%;"
+                    src="https://www.youtube-nocookie.com/embed/AinAZQgQp_s?si=DI-PY11bTJVXJB8C"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe style="width: 50%; height: 50%;"
+                    src="https://www.youtube-nocookie.com/embed/GLQhbRGv5qU?si=Wu4mERzKFH0ts3ct"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <ul id="telop">
+        <li><span id="weathertelop" width="1408" height="24"></span></li>
+    </ul>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="li-scroller.js"></script>
+    <script src="leaflet.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
