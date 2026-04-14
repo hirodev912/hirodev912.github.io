@@ -1,71 +1,43 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地震監視モニタ</title>
     <meta charset="UTF-8">
-    <title>Hirodev</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="leaflet.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="http://fonts.googleapis.com/earlyaccess/notosansjp.css">
 </head>
 
 <body>
-    <header id="name">
-        <h1>hirodev</h1>
-        <p>hiro(広島の)dev(デベロッパー)という意味です。</p>
-        <nav id="menu">
-            <a class="menu_link" href="#home">ホーム</a>
-            <a class="menu_link" href="#softs">作ったソフト</a>
-            <a class="menu_link" href="#links">リンク集</a>
-        </nav>
-    </header>
-    <div id="wrapper">
-        <div id="home">
-            <h1>自己紹介</h1>
-            <p>
-                職業：高校生
-                <br>
-                住んでるとこ：広島県広島市
-                <br>
-                好きなアニメ：のんのんびより
-                <br>
-                使える言語：
-            <ul>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-                <li>C#</li>
-            </ul>
-            </p>
-            <p>chrome拡張機能の開発とかたまにデスクトップアプリ作ってます。最近はガジェットにハマったり。iPhoneを脱獄させるの好き。</p>
-            <p>デザインのセンスが壊滅的なのでどうしてもしょぼくなっちゃいます。許して</p>
-        </div>
-        <hr>
-        <div id="softs">
-            <h1>作ったソフトたち</h1>
-            <a class="link_href" href="https://t.co/yZP5dHmqJ7">にゃんぱすーボタン（仮）</a>
-            <span>本家にゃんぱすーボタンが消えてたので復活するまで。</span>
-            <br>
-            <a class="link_href" href="https://hirodev912.github.io/worldquakemonitor/">地震監視モニター</a>
-            <span>リアルタイムの揺れと過去の地震情報の統計データが見れます。</span>
-            <br>
-            <a class="link_href" href="https://hirodev912.github.io/gpsspeed/">GPS速度計</a>
-            <span>通った道、速度、最大速度、総距離が見れます。</span>
-            <br>
-            <a class="link_href" href="https://hirodev912.github.io/shooting/shooting.html">弾幕シューティング</a>
-            <span>弾幕STGの練習にどうぞ。2時間で作った手抜きゲー</span>
-        </div>
-        <hr>
-        <div id="links">
-            <h1>外部SNSへのリンク集</h1>
-            <a class="link_href" href="https://x.com/DevHiro85970">X(旧Twitter)のメイン垢</a>
-            <br>
-            <a class="link_href" href="https://x.com/EEWHiroshima">細々とやってる地震観測垢</a>
-        </div>
-
-        <footer>
-            <img src="https://count.getloli.com/@hirodev?name=hirodev&theme=moebooru&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=auto">
-        </footer>
+    <div id="mainwrapper"></div>
+    <div id="wrapper1">
+        <div id="eqlist"></div>
+        <div id="eqmap"></div>
     </div>
+
+    <div id="wrapper2">
+        <div id="tubevideos">
+            <iframe class="player" src="https://www.youtube-nocookie.com/embed/rvtygG4n6ew?si=KWnW_FxuC_wWHUuW"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe class="player" src="https://www.youtube-nocookie.com/embed/ZeZ049BUy8Q?si=jKPNpKuxRzwOyNKB"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <ul id="telop">
+        <li><span id="weathertelop" width="1408" height="24"></span></li>
+    </ul>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="li-scroller.js"></script>
+    <script src="leaflet.js"></script>
     <script src="index.js"></script>
 </body>
 
