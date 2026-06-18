@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div id="contents">
+        <span>リンクをペースト</span>
+        <div class="wrapper-row">
+            <input id="url" type="text" size="55" placeholder="https://www.youtube.com/watch?v=XXXXXXX">
+            <button id="submit">再生</button>
+        </div>
+        <iframe id="player"></iframe>
+        <div class="wrapper-row">
+            <input type="radio" name="domain" id="url_1">
+            <label for="url_1">youtube.com</label>
+            <input type="radio" name="domain" id="url_2" checked>
+            <label for="url_2">youtube-nocookie.com</label>
+        </div>
+        <span>※動画が再生されない場合はサーバーを切り替えてください。</span>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>

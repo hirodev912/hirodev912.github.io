@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: #000;
+    background: #eee;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+input[type*="text"] {
+    width: 70%;
+    font-size: 1em;
+}
+
+button {
+    font-size: 1em;
+    border-radius: 3px;
+    border: 1px solid #5f5;
+    background: #1c1;
+    color: #fff;
+}
+
+#contents {
+    position: relative;
+    width: 60%;
+    height: 100vh;
+    left: 20%;
+    background: #dfdfdf;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#player {
+    margin-top: 5vh;
+    aspect-ratio: 4 / 3;
+    width: 80%;
+    height: auto;
+    background: #000;
+}
+
+.wrapper-row {
+    flex-direction: row;
+}
