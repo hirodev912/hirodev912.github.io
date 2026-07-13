@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+
+<head>
+    <title>防災科学技術研究所 強震モニタ</title>
+    <link rel="stylesheet" href="./main.css">
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <noscript>
+        <p>強震モニタを利用するにはJavaScriptを有効にする必要があります。</p>
+    </noscript>
+    <div id="outer-bound">
+        <div id="title-header"></div>
+        <div id="top-controls">
+            <input type="checkbox" id="periodic" name="periodic" value="1" checked>2秒毎に自動更新
+            <input type="button" id="reload-btn" value="最新の状態に更新">
+            <div id="help">
+                <input type="button" onclick="help()" id="help-btn">
+            </div>
+        </div>
+        <div id="outimg">
+            <map name="map_1"></map>
+            <img id="map" alt="Map">
+            <div id="gauge-container"><img id="gauge" alt="Scale" src="./nied_acmap_s_scale.png">
+            </div>
+        </div>
+        <div id="bottom-controls">
+            <form name="f">
+                <select id="kind" name="kind">
+                    <option value="acmap" selected>最大加速度</option>
+                    <option value="jma">リアルタイム震度</option>
+                </select>
+                <input type="radio" name="depth" id="surface" value="s" checked>地表
+                <input type="radio" name="depth" id="borehole" value="b">地中
+                <div id="slider-container">
+                    <div id="slider-right"></div>
+                    <div id="slider-left"></div>
+                    <div id="slider"></div>
+                    <div id="time">最新</div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="jquery.min.js"></script>
+    <script src="jquery-ui.min.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+body { font-size:0.8em; padding:0; margin:0; color:white;}
+#outer-bound {margin:0; background-color:#444; width:359px;}
+#title-header {background: #444 url(./frmslider_ttl_gj.png) no-repeat left top; height:23px; width:359px;}
+#reload-btn {width:150px;}
+#help-btn {border:0px; background:url(./Button-Help-icon.png) no-repeat left top; height:24px; width:24px;}
+#help {position:absolute; top:25px; left:320px; }
+#outimg {background: #444 url(./base_map.png) no-repeat; position:relative; margin:0 3px; width: 352px; height:400px;}
+#map { width: 352px; height:400px; border: 0px }
+#top-controls {padding:2px 10px;}
+#bottom-controls {padding:2px 10px;height:60px;}
+#gauge-container {position:absolute; top:91px; left:300px; height:300px; width:49px; background-color:#fff;}
+#slider-container {clear:left; width:230px; position:relative;}
+#time {float:left; width:100px;height:20px; top:5px; text-align:center; left:230px; border:1px solid #fff; vertical-align:middle; position:absolute;}
+#msg{color:green;font-size:0.7em;}
+#disclaimer{visibility:hidden;}
+#slider, #slider-right, #slider-left{ padding:0; margin:0; top:0px; height:32px; z-index:0; background-repeat: no-repeat; background-image: url(./slider_bg.gif); position:absolute;}
+#slider-right{ left:0px; width:12px; background-position:0px 0px;}
+#slider{ left:12px; width:180px; background-position:-12px 0px; }
+#slider-left{ left:180px; width:32px; background-position:-180px 0px; }
+.ui-slider-handle { position:absolute; z-index:1; height:21px; width:11px; top:10px; left:-20px; background-image:url(./slider_f.gif);  }
+.ui-state-focus{ outline:none; }
+noscript{color:red; font-weight:bold;}
