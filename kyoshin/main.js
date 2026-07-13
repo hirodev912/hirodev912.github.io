@@ -93,7 +93,7 @@ function onKeyDown(e) {
 }
 
 async function update() {
-    var url = 'http://www.kmoni.bosai.go.jp/data/map_img/RealTimeImg/' + maptype;
+    var url = 'https://smi.lmoniexp.bosai.go.jp/data/map_img/RealTimeImg/' + maptype;
     basetime = new Date().getTime() + timeDelay - 2000;
 
     if (timeoffset == 0) {
