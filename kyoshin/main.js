@@ -93,11 +93,6 @@ function onKeyDown(e) {
 
 async function update() {
     var url = 'http://www.kmoni.bosai.go.jp/data/map_img/RealTimeImg/' + maptype;
-    var timeDelay = await chrome.storage.local.get(["timeDelay"]);
-    timeDelay = timeDelay["timeDelay"];
-    if (!timeDelay) {
-        timeDelay = 0;
-    }
     basetime = new Date().getTime() + timeDelay - 2000;
 
     if (timeoffset == 0) {
