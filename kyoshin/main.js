@@ -7,6 +7,7 @@ var step = 2;
 var initial_js_time = (new Date()).getTime();
 var initial_last_updates;
 var periodicCheckbox;
+var timeDelay = 0;
 
 function OnLoad() {
     periodicCheckbox = $('#periodic');
